@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --color-primary: #16A34A;
+    --color-secondary: #0F766E;
+
+    --color-text: #0F172A;
+    --color-text-secondary: #64748B;
+
+    --color-background:#F8FCFA;
+    --color-section:#F4FAF7;
+
+    --color-dark: #061F1D;
+    --color-accent:#86EFAC;
+
+    --color-border:#E2E8F0;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+   
+}
+.navbar li {
+    margin: 0 1rem;
+    
+}
+.navbar a {
+            text-decoration: none;
+            color: var(--color-text); /* Pour que la couleur s'applique aussi au lien */
+        }
+ .navbar > a:nth-of-type(2){
+    color:var(--color-section);
+}
+
+
+
+.btn-directionnel {
+  /* 1. FLEXBOX : Aligne le texte et la flèche parfaitement au centre */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem; /* Écarte le texte de la flèche */
+
+  /* Structure du bouton */
+  padding: 0.65rem 1.4rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  background-color: #22c55e; /* Vert GreenTech */
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+
+  /* 2. PRÉPARATION DE L'ANIMATION : Transition fluide pour tout le bouton */
+  transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+}
+
+/* Génération de la flèche en CSS pur */
+.btn-directionnel::after {
+  content: "\2192"; /* Code de la flèche → */
+  font-size: 1em;          /* 1em signifie "exactement 100% de la taille du parent" */
+  line-height: 1;          /* Force la hauteur de ligne à être identique à sa propre taille */
+  display: inline-block;
+  
+  /* Transition spécifique pour la flèche */
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 3. L'ANIMATION AU SURVOL (:hover) ET AU CLAVIER (:focus) */
+.btn-directionnel:hover,
+.btn-directionnel:focus {
+  background-color: #16a34a; /* Vert plus foncé */
+  transform: translateY(-3px); /* Effet d'élévation (monte de 3px) */
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3); /* Ajoute une ombre lumineuse verte */
+  outline: none;
+}
+
+/* Animation de la flèche seule au survol */
+.btn-directionnel:hover::after,
+.btn-directionnel:focus::after {
+  transform: translateX(5px); /* La flèche glisse de 5px vers la droite */
+}
+
+/* Effet à l'enfoncement (clic) */
+.btn-directionnel:active {
+  transform: translateY(-1px); /* Redescend légèrement quand on clique */
+  box-shadow: 0 2px 6px rgba(34, 197, 94, 0.2);
+}
+
