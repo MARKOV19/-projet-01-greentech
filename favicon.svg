@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60">
+  <style>
+    /* Optimisation de la tige pour le mode clair et sombre */
+    .tige { stroke: #ffffff; }
+    @media (prefers-color-scheme: light) {
+      .tige { stroke: #1e293b; } /* Devient sombre sur fond clair pour être visible */
+    }
+  </style>
+  <!-- La feuille verte centrée -->
+  <path d="M30 10 C15 25 15 45 30 50 C45 45 45 25 30 10 Z" fill="#16A34A" />
+  <path d="M30 50 L30 25" class="tige" stroke-width="3" stroke-linecap="round" />
+</svg>
