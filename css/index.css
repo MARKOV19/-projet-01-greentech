@@ -24,6 +24,7 @@ body {
     color: var(--color-text);
     background-color: var(--color-background);
 }
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -48,6 +49,106 @@ body {
         }
  .navbar > a:nth-of-type(2){
     color:var(--color-section);
+}
+.navbar li {
+  position: relative; /* Indispensable pour positionner le trait par-dessous */
+  color: #94a3b8;     /* Couleur initiale (ex: gris muted) */
+  text-decoration: none;
+  font-weight: 500;
+  padding-block: 8px;
+  
+  /* Animation fluide de la couleur (0.3 seconde) */
+  transition: color 0.3s ease;
+}
+
+/* 1. Changement de couleur au survol */
+.navbar li a:hover {
+  color: #16a34a; /* Nouvelle couleur au survol (Vert GreenTech) */
+}
+
+
+/* 2. Création du trait invisible au repos */
+.navbar li::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;          /* Épaisseur du trait */
+  background-color: #16a34a; /* Couleur du trait matching */
+  
+  /* L'ASTUCE : On réduit la taille du trait à 0 au repos */
+  transform: scaleX(0);
+  /* Centre le point de départ de l'animation */
+  transform-origin: center; 
+  
+  /* Animation fluide du trait */
+  transition: transform 0.3s ease;
+}
+
+/* 3. Déploiement du trait au survol */
+.navbar li:hover::after {
+  /* Le trait reprend sa taille normale (100% de la largeur du lien) */
+  transform: scaleX(1);
+}
+
+#hero{
+  /* 1. Chemin vers votre image */
+  background-image: url('/assets/images/heroimage.png');
+
+  /* 2. Empêche l'image de se répéter comme une mosaïque */
+  background-repeat: no-repeat;
+
+  /* 3. Centre l'image horizontalement et verticalement */
+  background-position: center;
+
+  /* 4. PRATIQUE MODERNE : Force l'image à couvrir tout l'espace disponible
+     sans être écrasée (elle se recadre proprement si besoin) */
+  background-size: cover;
+
+  /* 5. Optionnel : Donne une hauteur minimale pour voir l'image */
+  min-height: 100dvh; 
+}
+#hero{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/images/heroimage.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: var(--color-text); /* Le texte ressortira parfaitement */
+  
+}
+.hero-content{
+  display: flex;
+  flex-direction: column; 
+}
+.hero-text{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3rem;
+  padding:2rem 1rem ;
+  width: 50%; 
+ background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+.hero-text h1{
+font-size: 3rem;
+font-weight: bold;
+}
+.hero-text p{
+  font-size: 1.2rem;
+}
+.hero-btn{
+  display: flex;
+  flex-direction: row;
+  margin-top: 3rem;
+  gap: 3rem;
+  padding-bottom: 10rem;
+}
+.hero-btn >a:nth-of-type(2) {
+background:#F4FAF7;
+border-radius: #16A34A;
+border:solid 1px;
+color: #16A34A ;
 }
 
 
@@ -102,6 +203,90 @@ body {
 .btn-directionnel:active {
   transform: translateY(-1px); /* Redescend légèrement quand on clique */
   box-shadow: 0 2px 6px rgba(34, 197, 94, 0.2);
+}
+ span{
+color: #16A34A;
+font-weight: bold;
+}
+#apropos{
+ border-bottom: 2px solid var(--color-border);
+}
+
+.apropos-ctn{
+  display: flex;
+  flex-direction:row ;
+  gap: 1rem;
+  margin: 1rem;
+}
+.apropos-img{
+  flex: 1;
+  width: 100%;       
+  height: 300px;     
+  overflow: hidden;
+  margin: 2rem 1rem;
+}
+.apropos-img>img{
+  width: 100%;       
+  height: 100%;
+  object-fit: cover; 
+  object-position: center; 
+  background-repeat: no-repeat;
+  border-radius: .9rem;
+}
+.apropos-texte{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap:2rem ;
+  color: var(--color-text-secondary);
+
+}
+.apropos-texte h2{
+  color: var(--color-text);
+}
+
+.apropos-ctx{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  font-size: smaller;
+
+}
+.apropos-ctx>p{
+  display: flex;
+  flex-direction: column;    
+}
+.apropos-ctx>p:nth-of-type(2) {
+border-inline: 2px solid var(--color-border);
+padding-inline: 20px;
+}
+.apropos-ctx span{
+  font-size: 3rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#ctn{ 
+background-image: linear-gradient(rgba(16, 59, 53, 1),
+ rgba(15, 118, 110, 1));
+ padding:2rem ;
+ gap: 2rem; 
+ border-bottom: 0.1px solid var(--color-text-secondary);
+}
+#ctn a{
+  margin-top: 1rem;
 }
 footer {
   background-color:var(--color-dark);
