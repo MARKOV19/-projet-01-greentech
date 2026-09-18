@@ -204,6 +204,7 @@ color: #16A34A ;
   transform: translateY(-1px); /* Redescend légèrement quand on clique */
   box-shadow: 0 2px 6px rgba(34, 197, 94, 0.2);
 }
+
  span{
 color: #16A34A;
 font-weight: bold;
@@ -263,6 +264,149 @@ padding-inline: 20px;
 .apropos-ctx span{
   font-size: 3rem;
 }
+#solutions{
+  background-color: var(--color-section);
+  border-bottom: 0.1px solid var(--color-text-secondary);
+   padding:2rem;
+}
+
+.solutions-card{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.solutions-card div{
+  background-color:#DDE7E2;
+  border-radius: .9rem;
+   padding-left:1rem;
+}
+.solutions-card div p{
+ color: var(--color-text-secondary);
+}
+.solutions-card a{
+  text-decoration: none;
+  color:var(--color-primary);
+  
+}
+.card-energy{
+ font-family: system-ui, sans-serif;
+  max-width: 350px;
+  padding: 24px;
+}
+.icon-energy img {
+  width: 50px;  /* Taille de votre icône */
+  height: 50px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  padding: 10px;
+
+}
+
+.card-agriculture {
+  font-family: system-ui, sans-serif;
+  max-width: 350px;
+  padding: 24px;
+}
+.icon-agri img{
+  width: 50px;  
+  height: 50px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.smart-cities svg{
+  background-color: #2563eb; 
+  color: #ffffff; 
+  /* Dimensions du cercle */
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  border-radius: 50%; 
+  /* Centrage parfait du dessin SVG dans le rond bleu */
+  display: inline-flex;
+  align-items: center;
+  margin-top: 16px; 
+}
+.icon-wrapper {
+  /* Fond vert moderne pour l'agriculture */
+  background-color: #16a34a; 
+  
+  /* Dimensions du cercle */
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  
+  /* Centrage parfait de l'image .svg */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  
+}
+
+.icon-wrapper .icon {
+  width: 50px;  /* Taille de votre icône */
+  height: 50px
+}
+.card-transform{
+   font-family: system-ui, sans-serif;
+  max-width: 350px;
+  padding: 24px;
+}
+
+.setting-icon img{
+  background-color:rgb(153, 130, 238);
+  padding: 15px;
+  border-radius:50%;
+}
+#projets{
+   border-bottom: 0.1px solid var(--color-text-secondary);
+   padding:2rem;
+}
+#projets >div{
+  display: flex;
+  flex-direction: column;
+}
+.prj-card{
+  display: flex;
+  flex-direction: row;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permet de passer à la ligne sur mobile */
+}
+
+.prj-card>div{
+  border: solid  1px var(--color-border);
+   background-color:#ffffff;
+  border-radius: .9rem;
+   padding:2rem;
+
+}
+.prj-card>div a{
+  text-decoration:none;
+  color: #16A34A;
+}
+.ville, .nrg, .smart {
+    flex: 1;
+    min-width: 280px; /* Largeur minimale pour le responsive */
+}
+.ville > div, .nrg > div, .smart > div {
+    width: 100%;
+    height: 250px; 
+    overflow: hidden; /* Coupe ce qui dépasse */
+    border-radius: 8px; 
+}
+.ville img, .nrg img, .smart img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+
+
 
 
 
@@ -350,6 +494,82 @@ gap: 0.5rem;
   margin-top: 1rem;
   color: var(--color-text-secondary);
   font-size: 0.875rem;
+}
+
+@media (max-width: 968px) {
+   .navbar {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+   .nav-links {
+    gap: 1.5rem;
+  }
+  .hero-text {
+        width: 80%; 
+    }
+    .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+   .container {
+    padding: 2rem 1rem;
+  }
+   .apropos-ctn {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .apropos-img {
+        height: 300px;
+    }
+}
+@media (max-width: 768px){
+   .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    .navbar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .navbar li {
+        margin: 0.5rem;
+    }
+
+    /* Hero plein écran sur mobile */
+    .hero-text {
+        width: 100%;
+        background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.4));
+        padding: 4rem 1.5rem;
+    }
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+    .hero-btn {
+        flex-direction: column; /* Boutons l'un sur l'autre */
+        gap: 1rem;
+    }
+
+    /* Statistiques À Propos alignées verticalement */
+    .apropos-ctx {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .apropos-ctx > p:nth-of-type(2) {
+        border-inline: none;
+        border-block: 2px solid var(--color-border);
+        padding-inline: 0;
+        padding-block: 20px;
+    }
+
+    /* Ajustement des cartes Solutions & Projets */
+    .solutions-card > div, .ville, .nrg, .smart {
+        max-width: 100%; /* Prend toute la largeur sur mobile */
+    }
 }
 
 
