@@ -23,6 +23,10 @@ body {
     line-height: 1.6;
     color: var(--color-text);
     background-color: var(--color-background);
+      
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .navbar {
@@ -92,30 +96,19 @@ body {
   transform: scaleX(1);
 }
 
-#hero{
-  /* 1. Chemin vers votre image */
-  background-image: url('/assets/images/heroimage.png');
+#hero {
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.25),
+            rgba(255, 255, 255, 0.25)
+        ),
+        url('/assets/images/heroimage.png');
 
-  /* 2. Empêche l'image de se répéter comme une mosaïque */
-  background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
-  /* 3. Centre l'image horizontalement et verticalement */
-  background-position: center;
-
-  /* 4. PRATIQUE MODERNE : Force l'image à couvrir tout l'espace disponible
-     sans être écrasée (elle se recadre proprement si besoin) */
-  background-size: cover;
-
-  /* 5. Optionnel : Donne une hauteur minimale pour voir l'image */
-  min-height: 100dvh; 
-}
-#hero{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/images/heroimage.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  color: var(--color-text); /* Le texte ressortira parfaitement */
-  
+    min-height: 650px;
 }
 .hero-content{
   display: flex;
@@ -360,11 +353,11 @@ padding-inline: 20px;
   padding: 15px;
   border-radius:50%;
 }
-#projets{
+#projects{
    border-bottom: 0.1px solid var(--color-text-secondary);
    padding:2rem;
 }
-#projets >div{
+#projects >div{
   display: flex;
   flex-direction: column;
 }
@@ -406,30 +399,14 @@ padding-inline: 20px;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#ctn{ 
+#contact{ 
 background-image: linear-gradient(rgba(16, 59, 53, 1),
  rgba(15, 118, 110, 1));
  padding:2rem ;
  gap: 2rem; 
  border-bottom: 0.1px solid var(--color-text-secondary);
 }
-#ctn a{
+#contact a{
   margin-top: 1rem;
 }
 footer {
@@ -496,80 +473,485 @@ gap: 0.5rem;
   font-size: 0.875rem;
 }
 
-@media (max-width: 968px) {
-   .navbar {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-  }
-   .nav-links {
-    gap: 1.5rem;
-  }
-  .hero-text {
-        width: 80%; 
-    }
-    .hero h1 {
-    font-size: 2rem;
-  }
+/* =====================================================
+   RESPONSIVE DESIGN
+   ===================================================== */
 
-  .hero p {
-    font-size: 1rem;
-  }
-   .container {
-    padding: 2rem 1rem;
-  }
-   .apropos-ctn {
-        flex-direction: column;
+
+/* =====================================================
+   TABLETTE
+   968px et moins
+   ===================================================== */
+
+@media (max-width: 968px) {
+
+    /* ---------------- NAVBAR ---------------- */
+
+    .navbar {
+        padding: 1rem 1.5rem;
+        gap: 1rem;
+    }
+
+    .navbar-logo svg {
+        width: 180px;
+        height: auto;
+    }
+
+    .navbar ul {
+        gap: 1rem;
+    }
+
+    .navbar li {
+        margin: 0;
+    }
+
+    .navbar a {
+        font-size: 0.9rem;
+    }
+
+
+    /* ---------------- HERO ---------------- */
+
+    #hero {
+        min-height: 600px;
+        background-position: center;
+    }
+
+    .hero-text {
+        width: 65%;
+        padding: 3rem 2rem;
         gap: 2rem;
     }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .hero-btn {
+        gap: 1rem;
+        margin-top: 1rem;
+        padding-bottom: 4rem;
+    }
+
+
+    /* ---------------- À PROPOS ---------------- */
+
+    .apropos-ctn {
+        gap: 2rem;
+        margin: 2rem;
+    }
+
     .apropos-img {
+        margin: 1rem 0;
         height: 300px;
     }
-}
-@media (max-width: 768px){
-   .navbar {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-    .navbar ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .navbar li {
-        margin: 0.5rem;
+
+    .apropos-texte {
+        gap: 1.5rem;
     }
 
-    /* Hero plein écran sur mobile */
-    .hero-text {
-        width: 100%;
-        background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.4));
-        padding: 4rem 1.5rem;
+    .apropos-ctx {
+        gap: 1rem;
     }
-    .hero-text h1 {
+
+    .apropos-ctx span {
         font-size: 2.2rem;
     }
-    .hero-btn {
-        flex-direction: column; /* Boutons l'un sur l'autre */
+
+
+    /* ---------------- SOLUTIONS ---------------- */
+
+    #solutions {
+        padding: 2rem 1.5rem;
+    }
+
+    .solutions-card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
 
-    /* Statistiques À Propos alignées verticalement */
-    .apropos-ctx {
-        flex-direction: column;
-        gap: 2rem;
-    }
-    .apropos-ctx > p:nth-of-type(2) {
-        border-inline: none;
-        border-block: 2px solid var(--color-border);
-        padding-inline: 0;
-        padding-block: 20px;
+    .solutions-card > div {
+        max-width: none;
     }
 
-    /* Ajustement des cartes Solutions & Projets */
-    .solutions-card > div, .ville, .nrg, .smart {
-        max-width: 100%; /* Prend toute la largeur sur mobile */
+
+    /* ---------------- PROJETS ---------------- */
+
+    #projects {
+        padding: 2rem 1.5rem;
     }
+
+    .prj-card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .prj-card > div {
+        padding: 1rem;
+    }
+
+    .ville,
+    .nrg,
+    .smart {
+        min-width: 0;
+    }
+
+    .ville > div,
+    .nrg > div,
+    .smart > div {
+        height: 220px;
+    }
+
+
+    /* ---------------- FOOTER ---------------- */
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
 }
 
 
+/* =====================================================
+   MOBILE
+   768px et moins
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+
+    /* ---------------- NAVBAR ---------------- */
+
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .navbar-logo svg {
+        width: 170px;
+    }
+
+    .navbar ul {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+    }
+
+    .navbar li {
+        margin: 0;
+    }
+
+    .navbar li a {
+        font-size: 0.85rem;
+    }
+
+    .btn-directionnel {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.1rem;
+    }
+
+
+    /* ---------------- HERO ---------------- */
+
+    #hero {
+        min-height: auto;
+        background-position: center;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-text {
+        width: 100%;
+        min-height: 650px;
+
+        padding: 5rem 1.5rem 3rem;
+
+        gap: 1.5rem;
+
+        background-image:
+            linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.95),
+                rgba(255, 255, 255, 0.65)
+            );
+    }
+
+    .hero-text > span {
+        font-size: 0.75rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .hero-text p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .hero-text p br {
+        display: none;
+    }
+
+    .hero-btn {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-top: 1rem;
+        padding-bottom: 0;
+    }
+
+    .hero-btn a {
+        width: auto;
+    }
+
+
+    /* ---------------- À PROPOS ---------------- */
+
+    .apropos-ctn {
+        flex-direction: column-reverse;
+        margin: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .apropos-img {
+        width: 100%;
+        height: 280px;
+        margin: 0;
+    }
+
+    .apropos-texte {
+        gap: 1.2rem;
+    }
+
+    .apropos-texte h2 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+
+    .apropos-texte p br {
+        display: none;
+    }
+
+    .apropos-ctx {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .apropos-ctx > p {
+        padding: 0.8rem 0;
+    }
+
+    .apropos-ctx > p:nth-of-type(2) {
+        border-inline: none;
+        border-block: 1px solid var(--color-border);
+        padding: 1rem 0;
+    }
+
+    .apropos-ctx span {
+        font-size: 2rem;
+    }
+
+
+    /* ---------------- SOLUTIONS ---------------- */
+
+    #solutions {
+        padding: 2rem 1.2rem;
+    }
+
+    #solutions h2 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+
+    .solutions-card {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .solutions-card > div {
+        width: 100%;
+        max-width: none;
+        padding: 1.5rem;
+    }
+
+
+    /* ---------------- PROJETS ---------------- */
+
+    #projects {
+        padding: 2rem 1.2rem;
+    }
+
+    #projects h2 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+
+    .prj-card {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .prj-card > div {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .ville,
+    .nrg,
+    .smart {
+        min-width: 0;
+    }
+
+    .ville > div,
+    .nrg > div,
+    .smart > div {
+        height: 220px;
+    }
+
+
+    /* ---------------- CTA ---------------- */
+
+    #contact {
+        padding: 3rem 1.5rem;
+    }
+
+    #contact h2 {
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+
+    #contact p {
+        font-size: 0.95rem;
+    }
+
+
+    /* ---------------- FOOTER ---------------- */
+
+    footer {
+        padding: 2rem 1.2rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-logo svg {
+        width: 180px;
+        height: auto;
+    }
+
+    .social-media ul {
+        flex-wrap: wrap;
+    }
+
+}
+
+
+/* =====================================================
+   PETIT MOBILE
+   480px et moins
+   ===================================================== */
+
+@media (max-width: 480px) {
+
+    /* NAVBAR */
+
+    .navbar-logo svg {
+        width: 150px;
+    }
+
+    .navbar ul {
+        gap: 0.5rem;
+    }
+
+    .navbar li a {
+        font-size: 0.75rem;
+    }
+
+
+    /* HERO */
+
+    .hero-text {
+        min-height: 600px;
+        padding: 4rem 1rem 2rem;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-text p {
+        font-size: 0.9rem;
+    }
+
+    .hero-btn {
+        width: 100%;
+    }
+
+    .hero-btn a {
+        width: 100%;
+    }
+
+
+    /* À PROPOS */
+
+    .apropos-ctn {
+        margin: 1rem;
+    }
+
+    .apropos-texte h2 {
+        font-size: 1.6rem;
+    }
+
+    .apropos-img {
+        height: 230px;
+    }
+
+
+    /* SOLUTIONS */
+
+    #solutions h2,
+    #projects h2 {
+        font-size: 1.6rem;
+    }
+
+
+    /* PROJETS */
+
+    .ville > div,
+    .nrg > div,
+    .smart > div {
+        height: 180px;
+    }
+
+
+    /* CTA */
+
+    #contact h2 {
+        font-size: 1.7rem;
+    }
+
+
+    /* FOOTER */
+
+    .footer-bottom {
+        text-align: center;
+    }
+
+}
